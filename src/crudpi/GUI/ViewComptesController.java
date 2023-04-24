@@ -34,7 +34,9 @@ import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.shape.Circle;
@@ -66,6 +68,8 @@ public class ViewComptesController implements Initializable {
     private TableColumn<comptesBancaire, Void> delete;
     @FXML
     private Button pdf;
+    @FXML
+    private TextField recherche;
 
     /**
      * Initializes the controller class.
@@ -203,9 +207,50 @@ tableview.getColumns().add(qrCodeCol);
             }
         }
     }
+
+    @FXML
+    private void recherche(ActionEvent event) {
         
+        compteBancaireCRUD evc = new compteBancaireCRUD();
+
+    List<comptesBancaire> liste = evc.entitiesList();
+    ObservableList<comptesBancaire> olist = FXCollections.observableArrayList(liste);
+    try {
+
+        tableview.setItems(olist);
+        FilteredList<comptesBancaire> filtredData = new FilteredList<>(olist, b -> true);
+        recherche.textProperty().addListener((observable, olValue, newValue) -> {
+            filtredData.setPredicate(person -> {
+                if (newValue == null || newValue.isEmpty()) {
+                    return true;
+                }
+                String lowerCaseFilter = newValue.toLowerCase();
+
+                if (person.getNom().toLowerCase().indexOf(lowerCaseFilter) != -1) {
+                    return true;
+                } else if (String.valueOf(person.getPrenom()).indexOf(lowerCaseFilter) != -1)
+                    return true;
+                else
+                    return false;
+            });
+        });
+        SortedList<comptesBancaire> sortedData = new SortedList<comptesBancaire>(filtredData);
+        sortedData.comparatorProperty().bind(tableview.comparatorProperty());
+        tableview.setItems(sortedData);
+
+    } catch (Exception e) {
+        System.out.println(e.getMessage());
+
     }
+    }
+}
+
+
+   
+
     
+
+
 
    
 
