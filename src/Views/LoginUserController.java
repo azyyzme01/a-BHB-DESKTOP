@@ -13,9 +13,13 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import services.LoginSession;
 import services.UserServices;
+import utils.ConnectionBD;
 
 import java.io.IOException;
-
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.Arrays;
 
 public class LoginUserController {
 
@@ -28,55 +32,39 @@ public class LoginUserController {
     @FXML
     private PasswordField password;
 
-
     private Stage stage;
     private Scene scene;
     private Parent root;
-    public static User user;
 
-
+    @FXML
     public void login(ActionEvent event) throws IOException {
+        UserServices userServices = new UserServices();
 
-        UserServices cc=new UserServices();
+        if (password.getText().trim().isEmpty()) {
+            System.out.println("Password is required.");
+        } else {
+            String passwordHash = userServices.crypter_password(password.getText());
+            String emailStr = email.getText();
 
-        String email1=(email.getText());
-        String password1=cc.crypter_password(password.getText());
-        UserServices sp = new UserServices();
-        if((sp.login(email1, password1)==true)){
-            if(LoginSession.Roles.equals("[" +
-                    "ROLE_ADMIN" +
-                    "]")){
-
-                root = FXMLLoader.load(getClass().getResource("GestionUserBack.fxml"));
-                stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-                scene = new Scene(root);
-                stage.setTitle("Dashboard");
-                stage.setScene(scene);
-                stage.show();
-            }else{
-                root = FXMLLoader.load(getClass().getResource("Profile.fxml"));
-                stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-                scene = new Scene(root);
-                stage.setTitle("Profile");
-                stage.setScene(scene);
-                stage.show();
+            if (userServices.login(emailStr, passwordHash)) {
+                if (Arrays.equals(LoginSession.roles, new String[]{"ROLE_ADMIN"})) {
+                    root = FXMLLoader.load(getClass().getResource("GestionUserBack.fxml"));
+                    stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                    scene = new Scene(root);
+                    stage.setTitle("Dashboard");
+                    stage.setScene(scene);
+                    stage.show();
+                } else {
+                    root = FXMLLoader.load(getClass().getResource("FXMLFrontProfil.fxml"));
+                    stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                    scene = new Scene(root);
+                    stage.setTitle("Profile");
+                    stage.setScene(scene);
+                    stage.show();
+                }
+            } else {
+                System.out.println("Invalid email or password.");
             }
-
-        }else
-        {
-            System.out.print("nope");
-            User u=UserSignup.userConn;
         }
-
     }
-    /*@FXML
-    private void showRegisterStage() throws IOException {
-        root = FXMLLoader.load(getClass().getResource("LoginUser.fxml"));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setTitle("Login");
-        stage.setScene(scene);
-        stage.show();
-    }*/
 }
-

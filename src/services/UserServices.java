@@ -8,6 +8,18 @@ import java.security.MessageDigest;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.security.NoSuchAlgorithmException;
+import org.mindrot.jbcrypt.BCrypt;
+
+
+
+
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 
 public class UserServices {
     private Connection cnx = ConnectionBD.getInstance().getCnx();
@@ -124,47 +136,49 @@ return id;
         }
     }
     
-    public boolean login(String email, String password) {
+public boolean login(String email, String password) {
+    if (email == null || email.isEmpty() || password == null || password.isEmpty()) {
+        System.out.println("Invalid email or password.");
+        return false; 
+    }
+
     try {
-        String query = "SELECT * FROM `user` WHERE email ='" + email + "' AND password ='" + password + "'";
+        String query = "SELECT * FROM `user` WHERE email = '" + email + "'";
+
         Statement stm = cnx.createStatement();
         ResultSet rs = stm.executeQuery(query);
+
         if (!rs.isBeforeFirst()) {
-            System.out.println("User not found!");
+            System.out.println("Invalid email.");
             return false;
-        } else {
-            System.out.println("User is logged in.");
-            while (rs.next()) {
-                LoginSession.UID = rs.getInt("id");
-                LoginSession.Roles = rs.getString("roles");
-                LoginSession.Name = rs.getString("name");
-                LoginSession.email = rs.getString("email");
-                LoginSession.password = rs.getString("password");
-                //LoginSession.avatar = rs.getString("avatar");
-                LoginSession.IsLogged = true;
-            }
-            System.out.println(LoginSession.Name + " is connected.");
-            return true;
         }
+
+        rs.next();
+        String hashedPassword = rs.getString("password");
+        
+        String inputPasswordHash = BCrypt.hashpw(password, BCrypt.gensalt());
+        if (!BCrypt.checkpw(inputPasswordHash, hashedPassword)) {
+            System.out.println("Invalid password.");
+            return false; 
+        }
+
+        // Set login session variables here
+        // ...
+
+        System.out.println("Login successful.");
+        return true;
     } catch (SQLException ex) {
-        //System.out.println(ex);
+        System.out.println(ex);
     }
-    return false;
+
+    return false; 
+}
+public String crypter_password(String password) {
+    String hashedPassword = BCrypt.hashpw(password, BCrypt.gensalt());
+    return hashedPassword;
 }
 
-    public String crypter_password(String password) {
-        String hashValue = "";
-        try {
-            MessageDigest messageDigest = MessageDigest.getInstance("MD5");
-            messageDigest.update(password.getBytes());
-            byte[] digestedBytes = messageDigest.digest();
-            hashValue = DatatypeConverter.printHexBinary(digestedBytes).toLowerCase();
 
-        } catch (Exception e) {
-        }
-
-        //   return hashValue;
-        return hashValue;
-    }
+    
     
 }

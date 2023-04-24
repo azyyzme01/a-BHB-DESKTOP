@@ -10,6 +10,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import entities.User;
 import services.UserServices;
+import org.mindrot.jbcrypt.BCrypt;
 
 public class FXMLuserController implements Initializable {
 
@@ -63,17 +64,17 @@ public class FXMLuserController implements Initializable {
         } else {
             prenomctrl.setText("");
         }
-        if (emailf.getText().isEmpty()) {
-            emailctrl.setText("L'email est obligatoire ave @");
+        if (emailf.getText().isEmpty() || !emailf.getText().contains("@")) {
+            emailctrl.setText("L'email est obligatoire et doit contenir @");
             isValid = false;
         } else {
             emailctrl.setText("");
         }
-       if (mdpf.getText().isEmpty() || mdpf.getText().length() < 6) {
-    passwordctrl.setText("Le mot de passe est obligatoire et doit contenir au moins 6 caractères");
-    isValid = false;
-}
-else {
+        if (mdpf.getText().isEmpty() || mdpf.getText().length() < 6) {
+            passwordctrl.setText("Le mot de passe est obligatoire et doit contenir au moins 6 caractères");
+            isValid = false;
+        }
+        else {
             passwordctrl.setText("");
         }
         if (telf.getText().isEmpty()) {
@@ -100,13 +101,12 @@ else {
         user.setName(Nomf.getText());
         user.setPrenomc(prenomf.getText());
         user.setNumTel((telf.getText()));
-        user.setPassword(mdpf.getText());
         user.setEmail(emailf.getText());
+        user.setCity(adressef.getText());
         
-         user.setCity(adressef.getText());
-        
-       
-       
+        // Encrypt password
+        String hashedPassword = BCrypt.hashpw(mdpf.getText(), BCrypt.gensalt());
+        user.setPassword(hashedPassword);
 
         // Ajouter l'utilisateur
         userService.ajouteruser(user);

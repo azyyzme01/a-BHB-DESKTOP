@@ -1,7 +1,7 @@
 package utils;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
-
 import java.sql.SQLException;
 
 public class ConnectionBD {
@@ -25,8 +25,13 @@ public class ConnectionBD {
     }
 
     public static ConnectionBD getInstance() {
-        if(instance==null)
-        {instance=new ConnectionBD();
+        if(instance==null) {
+            instance=new ConnectionBD();
         }
-        return instance;}
+        return instance;
+    }
+    
+    public Connection getConnection() {
+        return getCnx();
+    }
 }
