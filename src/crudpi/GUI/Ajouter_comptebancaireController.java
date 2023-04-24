@@ -45,7 +45,7 @@ public class Ajouter_comptebancaireController implements Initializable {
     @FXML
     private TextField idf;
     @FXML
-    private Button deleteBtn;
+    private Button btnlistecompte;
 
     /**
      * Initializes the controller class.
@@ -81,7 +81,6 @@ public class Ajouter_comptebancaireController implements Initializable {
         
     }
 
-    @FXML
          public void showComptes(){
          FXMLLoader loader = new FXMLLoader(getClass().getResource("viewComptes.fxml"));
        try{
@@ -149,10 +148,25 @@ public class Ajouter_comptebancaireController implements Initializable {
         
     }
 
+//    @FXML
+//    private void deleteEntity(ActionEvent event) {
+//        int idCompte = Integer.valueOf(idf.getText());
+//        compteBancaireCRUD cb = new compteBancaireCRUD();
+//        cb.deleteEntity(idCompte);
+//    }
+
     @FXML
-    private void deleteEntity(ActionEvent event) {
-        int idCompte = Integer.valueOf(idf.getText());
-        compteBancaireCRUD cb = new compteBancaireCRUD();
-        cb.deleteEntity(idCompte);
+    private void listecompte(ActionEvent event) {
+        
+         FXMLLoader loader = new FXMLLoader(getClass().getResource("viewComptes.fxml"));
+       try{
+       Parent root = loader.load(); 
+
+        btnlistecompte.getScene().setRoot(root);
+       
+       }catch(IOException ex){
+       
+        System.out.println(ex.getMessage());
+    }
     }
 }

@@ -51,6 +51,8 @@ public class AjoutertransactionController implements Initializable {
     private Label idtf;
     @FXML
     private TextField idf;
+    @FXML
+    private Button btnlistetransactions;
 
     /**
      * Initializes the controller class.
@@ -159,5 +161,20 @@ public class AjoutertransactionController implements Initializable {
         tran.updateEntity(id,compte_source_id,nom,prenom,email,num_tlfn,compte_destination,montant);
         }
         
+    }
+
+    @FXML
+    private void listetransactions(ActionEvent event) {
+        
+         FXMLLoader loader = new FXMLLoader(getClass().getResource("viewTransactions.fxml"));
+       try{
+       Parent root = loader.load(); 
+
+        btnlistetransactions.getScene().setRoot(root);
+       
+       }catch(IOException ex){
+       
+        System.out.println(ex.getMessage());
+    }
     }
 }
