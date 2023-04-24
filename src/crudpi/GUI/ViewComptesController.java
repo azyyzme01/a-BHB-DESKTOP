@@ -28,11 +28,16 @@ import java.io.IOException;
 import static java.nio.file.Files.delete;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.print.Printer;
+import javafx.print.PrinterJob;
 import javafx.scene.Group;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TableView;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 /**
  * FXML Controller class
@@ -59,6 +64,8 @@ public class ViewComptesController implements Initializable {
     private Button addBtn;
     @FXML
     private TableColumn<comptesBancaire, Void> delete;
+    @FXML
+    private Button pdf;
 
     /**
      * Initializes the controller class.
@@ -178,8 +185,30 @@ tableview.getColumns().add(qrCodeCol);
         System.out.println(ex.getMessage());
     }
    }
-         
-      
-    }    
+
+    @FXML
+    private void pdf(ActionEvent event) {
+         PrinterJob job = PrinterJob.createPrinterJob();
+
+        Node root = this.tableview;
+
+        if (job != null) {
+            job.showPrintDialog(root.getScene().getWindow()); // Window must be your main Stage
+            Printer printer = job.getPrinter();
+            Node node = new Circle(400, 800, 800);
+
+            boolean success = job.printPage(tableview);
+            if (success) {
+                job.endJob();
+            }
+        }
+    }
+        
+    }
+    
+
+   
+
+ 
     
 
