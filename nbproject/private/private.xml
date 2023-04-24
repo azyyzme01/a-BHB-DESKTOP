@@ -3,23 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Azyyzme01/Desktop/PI/DESKTOP/TryCrud/src/Views/FXMLuser.fxml</file>
-            <file>file:/C:/Users/Azyyzme01/Desktop/PI/DESKTOP/TryCrud/src/Views/loginUser.fxml</file>
-            <file>file:/C:/Users/Azyyzme01/Desktop/PI/DESKTOP/TryCrud/src/services/UserServices.java</file>
-            <file>file:/C:/Users/Azyyzme01/Desktop/PI/DESKTOP/TryCrud/src/Views/GestionUserBackMain.java</file>
-            <file>file:/C:/Users/Azyyzme01/Desktop/PI/DESKTOP/TryCrud/src/main/MainClass.java</file>
-            <file>file:/C:/Users/Azyyzme01/Desktop/PI/DESKTOP/TryCrud/src/Views/GestionUserBackController.java</file>
-            <file>file:/C:/Users/Azyyzme01/Desktop/PI/DESKTOP/TryCrud/src/Views/GestionUserBack.fxml</file>
-            <file>file:/C:/Users/Azyyzme01/Desktop/PI/DESKTOP/TryCrud/src/services/UsersSession.java</file>
-            <file>file:/C:/Users/Azyyzme01/Desktop/PI/DESKTOP/TryCrud/src/utils/ConnectionBD.java</file>
-            <file>file:/C:/Users/Azyyzme01/Desktop/PI/DESKTOP/TryCrud/src/Views/NewFXMainuser.java</file>
-            <file>file:/C:/Users/Azyyzme01/Desktop/PI/DESKTOP/TryCrud/src/Views/mainfront.java</file>
-            <file>file:/C:/Users/Azyyzme01/Desktop/PI/DESKTOP/TryCrud/src/services/LoginSession.java</file>
-            <file>file:/C:/Users/Azyyzme01/Desktop/PI/DESKTOP/TryCrud/src/Views/FXMLFrontProfil.fxml</file>
-            <file>file:/C:/Users/Azyyzme01/Desktop/PI/DESKTOP/TryCrud/src/Views/FXMLFrontProfilController.java</file>
-            <file>file:/C:/Users/Azyyzme01/Desktop/PI/DESKTOP/TryCrud/src/Views/LoginUserController.java</file>
-            <file>file:/C:/Users/Azyyzme01/Desktop/PI/DESKTOP/TryCrud/src/Views/FXMLuserController.java</file>
-            <file>file:/C:/Users/Azyyzme01/Desktop/PI/DESKTOP/TryCrud/src/entities/User.java</file>
+            <file>file:/C:/Users/ANAS/Documents/NetBeansProjects/crudpi/src/crudpi/utils/connexion.java</file>
+            <file>file:/C:/Users/ANAS/Documents/NetBeansProjects/crudpi/src/crudpi/Crudpi.java</file>
+            <file>file:/C:/Users/ANAS/Documents/NetBeansProjects/crudpi/src/crudpi/entities/comptesBancaire.java</file>
+            <file>file:/C:/Users/ANAS/Documents/NetBeansProjects/crudpi/src/crudpi/services/qrcode.java</file>
+            <file>file:/C:/Users/ANAS/Documents/NetBeansProjects/crudpi/src/crudpi/GUI/firstwindow.java</file>
+            <file>file:/C:/Users/ANAS/Documents/NetBeansProjects/crudpi/src/crudpi/GUI/ViewComptesController.java</file>
         </group>
     </open-files>
 </project-private>
