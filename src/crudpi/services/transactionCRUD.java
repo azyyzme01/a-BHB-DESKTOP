@@ -16,7 +16,9 @@ import crudpi.interfaces.entityCRUD;
 import crudpi.utils.connexion;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  *
@@ -130,4 +132,39 @@ public class transactionCRUD implements entityCRUD<Transaction>{
             System.out.println(ex.getMessage());
         }
         }
+    
+    
+    
+    public static Map<String, Integer> countTransactionsByCompte() {
+    try {
+        String query = "SELECT cb.nom, COUNT(*) AS transaction_count " +
+                       "FROM Transaction t " +
+                       "INNER JOIN CompteBancaire cb ON t.compte_source_id = cb.id " +
+                       "GROUP BY cb.nom";
+            
+        PreparedStatement statement = connexion.getInstance().getCnx().prepareStatement(query);
+        ResultSet result = statement.executeQuery(query);
+            
+        Map<String, Integer> transactionCounts = new HashMap<>();
+
+        while (result.next()) {
+            String compteName = result.getString("nom");
+            int transactionCount = result.getInt("transaction_count");
+            transactionCounts.put(compteName, transactionCount);
+        }
+
+        return transactionCounts;
+    } catch (SQLException ex) {
+        System.out.println(ex.getMessage());
+    }
+        
+    return null;
+}
+
+    
+    
+    
+
+    
+    
 }

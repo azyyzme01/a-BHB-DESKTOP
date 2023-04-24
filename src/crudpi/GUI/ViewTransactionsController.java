@@ -23,7 +23,10 @@ import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 import javafx.util.Callback;
+import javafx.scene.chart.PieChart;
+import crudpi.services.chart;
 
 /**
  * FXML Controller class
@@ -56,6 +59,8 @@ public class ViewTransactionsController implements Initializable {
     private TableColumn<Transaction, Void> delete;
     @FXML
     private Button btnajoutertransaction;
+    @FXML
+    private Button btnstat;
 
     /**
      * Initializes the controller class.
@@ -126,4 +131,14 @@ public class ViewTransactionsController implements Initializable {
         System.out.println(ex.getMessage());
     }
     }
-    }    
+
+    
+
+   @FXML
+    public void DisplayChartPie() throws Exception{
+        chart chartpie = new chart();
+        Stage stage = new Stage();
+        chartpie.start(stage);
+        
+    }
+}

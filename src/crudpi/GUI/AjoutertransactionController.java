@@ -17,6 +17,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.chart.PieChart;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -53,6 +54,8 @@ public class AjoutertransactionController implements Initializable {
     private TextField idf;
     @FXML
     private Button btnlistetransactions;
+     @FXML
+    private PieChart pieChart;
 
     /**
      * Initializes the controller class.
