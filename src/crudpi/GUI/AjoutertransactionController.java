@@ -31,31 +31,27 @@ import javafx.scene.control.TextField;
 public class AjoutertransactionController implements Initializable {
 
     @FXML
-    private Label tfcompte_source_id;
+    private TextField tfcompte_source_id;
     @FXML
-    private Label tfnom;
+    private TextField tfnom;
     @FXML
-    private Label tfprenom;
+    private TextField tfprenom;
     @FXML
-    private Label tfemail;
+    private TextField tfemail;
     @FXML
-    private Label tfnum_tlfn;
+    private TextField tfnum_tlfn;
     @FXML
-    private Label tf_compte_destination;
+    private TextField tf_compte_destination;
     @FXML
-    private Label tfmontant;
+    private TextField tfmontant;
     @FXML
     private Button btnajoutertransaction;
     @FXML
     private Button btnmodifier_transaction;
     @FXML
-    private Label idtf;
-    @FXML
     private TextField idf;
     @FXML
     private Button btnlistetransactions;
-     @FXML
-    private PieChart pieChart;
 
     /**
      * Initializes the controller class.
