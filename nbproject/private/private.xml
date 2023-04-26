@@ -3,16 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Azyyzme01/Desktop/PI/DESKTOP/TryCrud/src/utils/ConnectionBD.java</file>
-            <file>file:/C:/Users/Azyyzme01/Desktop/PI/DESKTOP/TryCrud/src/services/LoginSession.java</file>
-            <file>file:/C:/Users/Azyyzme01/Desktop/PI/DESKTOP/TryCrud/src/Views/FXMLFrontProfilController.java</file>
-            <file>file:/C:/Users/Azyyzme01/Desktop/PI/DESKTOP/TryCrud/src/Views/GestionUserBackMain.java</file>
-            <file>file:/C:/Users/Azyyzme01/Desktop/PI/DESKTOP/TryCrud/src/services/UserServices.java</file>
-            <file>file:/C:/Users/Azyyzme01/Desktop/PI/DESKTOP/TryCrud/src/Views/GestionUserBackController.java</file>
-            <file>file:/C:/Users/Azyyzme01/Desktop/PI/DESKTOP/TryCrud/src/Views/LoginMain.java</file>
-            <file>file:/C:/Users/Azyyzme01/Desktop/PI/DESKTOP/TryCrud/src/Views/LoginUserController.java</file>
-            <file>file:/C:/Users/Azyyzme01/Desktop/PI/DESKTOP/TryCrud/src/Views/GestionUserBack.fxml</file>
-            <file>file:/C:/Users/Azyyzme01/Desktop/PI/DESKTOP/TryCrud/src/Views/FXMLuserController.java</file>
+            <file>file:/C:/Users/Azyyzme01/Desktop/PI/DESKTOP/A+BFB/src/GUI/ResetController.java</file>
+            <file>file:/C:/Users/Azyyzme01/Desktop/PI/DESKTOP/A+BFB/src/userjava/NewFXMain.java</file>
+            <file>file:/C:/Users/Azyyzme01/Desktop/PI/DESKTOP/A+BFB/src/GUI/SignupController.java</file>
+            <file>file:/C:/Users/Azyyzme01/Desktop/PI/DESKTOP/A+BFB/src/GUI/AdminController.java</file>
+            <file>file:/C:/Users/Azyyzme01/Desktop/PI/DESKTOP/A+BFB/src/GUI/MdpoublieeController.java</file>
+            <file>file:/C:/Users/Azyyzme01/Desktop/PI/DESKTOP/A+BFB/src/Services/UserService.java</file>
+            <file>file:/C:/Users/Azyyzme01/Desktop/PI/DESKTOP/A+BFB/src/GUI/LoginController.java</file>
+            <file>file:/C:/Users/Azyyzme01/Desktop/PI/DESKTOP/A+BFB/src/GUI/CodeTestController.java</file>
         </group>
     </open-files>
 </project-private>
