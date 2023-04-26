@@ -66,7 +66,7 @@ public class Ajouter_comptebancaireController implements Initializable {
         float solde_initial = Float.valueOf(tfsolde_initial.getText());
         
         
-        if  (!isFieldNotEmpty(nom) || !isFieldNotEmpty(prenom) || !isFieldNotEmpty(email))
+        if  (nom==null || !isFieldNotEmpty(prenom) || !isFieldNotEmpty(email) || !isFieldNotEmpty(email))
                  {
             
             Alert alert = new Alert(Alert.AlertType.WARNING);
@@ -74,7 +74,7 @@ public class Ajouter_comptebancaireController implements Initializable {
             alert.setHeaderText(null);
             alert.setContentText("All fields must be filled!");
             alert.showAndWait();
-            return false;
+            return true;
         }
         return true;
         

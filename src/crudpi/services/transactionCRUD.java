@@ -29,33 +29,29 @@ public class transactionCRUD implements entityCRUD<Transaction>{
       @Override
     public void addEntity(Transaction t) {
         try {
-    int compte_source_id =t.getCompte_source_id();
+    comptesBancaire compte_source_id = t.getCompte_source_id(); 
     String nom = t.getNom();
     String prenom = t.getPrenom();
     String email = t.getEmail();
     int num_tlfn= t.getNum_tlfn();
-    int compte_destination = t.getCompte_destination();
+    comptesBancaire compte_destination = t.getCompte_destination(); 
     float montant = t.getMontant();
     
 
-    String insertReservationQuery = "INSERT INTO transaction (compte_source_id,nom, prenom, email, num_tlfn,compte_destination, montant) VALUES (?,?,?, ?, ?, ?, ?)";
+    String insertReservationQuery = "INSERT INTO transaction (compte_source_id,nom, prenom, email, num_tlfn,compte_destination, montant)" + "VALUES (?,?,?, ?, ?, ?, ?)";
     PreparedStatement stmp = connexion.getInstance().getCnx().prepareStatement(insertReservationQuery);
         
-    stmp.setInt(1, compte_source_id);
+    stmp.setInt(1, t.getCompte_source_id().getId());
     stmp.setString(2, nom);
     stmp.setString(3, prenom);
     stmp.setString(4, email);
     stmp.setInt(5, num_tlfn);
-    stmp.setInt(6, compte_destination);
+    stmp.setInt(6, t.getCompte_destination().getId());
     stmp.setFloat(7, montant);
-//    stmp.executeUpdate();
-  //          System.out.println("ajout successsss");
- 
 
     int rowsAffected = stmp.executeUpdate();
-
     if (rowsAffected > 0) {
-        System.out.println("comptes added successfully");
+        System.out.println("transaction added successfully");
     } else {
         System.out.println("Failed to add compte");
     }
@@ -81,12 +77,18 @@ public class transactionCRUD implements entityCRUD<Transaction>{
         while (resultSet.next()) {
             Transaction transaction = new Transaction();
             transaction.setId(resultSet.getInt("id"));
-            transaction.setCompte_source_id(resultSet.getInt("compte_source_id"));
+            comptesBancaire compte_source_id = new comptesBancaire();
+            compte_source_id.setId(resultSet.getInt("compte_source_id"));
+            transaction.setCompte_source_id(compte_source_id);
+            //transaction.setCompte_source_id(resultSet.getInt("compte_source_id"));
             transaction.setNom(resultSet.getString("nom"));
             transaction.setPrenom(resultSet.getString("prenom"));
             transaction.setEmail(resultSet.getString("email"));
             transaction.setNum_tlfn(resultSet.getInt("num_tlfn"));
-            transaction.setCompte_destination(resultSet.getInt("num_tlfn"));
+             comptesBancaire compte_destination = new comptesBancaire();
+            compte_source_id.setId(resultSet.getInt("compte_source_id"));
+            transaction.setCompte_destination(compte_destination);
+           // transaction.setCompte_destination(resultSet.getInt("num_tlfn"));
             transaction.setMontant(resultSet.getFloat("montant"));
 
             TransactionList.add(transaction);

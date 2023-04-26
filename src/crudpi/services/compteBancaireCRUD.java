@@ -38,9 +38,6 @@ public class compteBancaireCRUD implements entityCRUD<comptesBancaire> {
     stmp.setString(3, email);
     stmp.setInt(4, num_tlfn);
     stmp.setFloat(5, solde);
-//    stmp.executeUpdate();
-  //          System.out.println("ajout successsss");
- 
 
     int rowsAffected = stmp.executeUpdate();
 
@@ -143,4 +140,32 @@ public class compteBancaireCRUD implements entityCRUD<comptesBancaire> {
     }
     return comptesBancaireList;
        }
+       
+       
+         public comptesBancaire find(int id) {
+        comptesBancaire compte = null;
+        String query = "SELECT * FROM comptebancaire WHERE id = ?";
+         try (
+            PreparedStatement statement=connexion.getInstance()
+                .getCnx().prepareStatement(query);
+         ResultSet rs = statement.executeQuery()){
+             
+            
+             
+            if (rs.next()) {
+                compte = new comptesBancaire();
+                compte.setId(rs.getInt("id"));
+                compte.setNom(rs.getString("nom"));
+                compte.setPrenom(rs.getString("prenom"));
+                compte.setEmail(rs.getString("email"));
+                compte.setSolde_initial(rs.getFloat("solde_initial"));
+                compte.setNum_tlfn(rs.getInt("num_tlfn"));
+            }
+            rs.close();
+            
+        } catch (SQLException ex) {
+            System.err.println("Error during find compte bancaire: " + ex.getMessage());
+        }
+        return compte;
+    }
        }

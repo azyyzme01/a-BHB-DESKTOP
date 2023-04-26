@@ -3,15 +3,25 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/ANAS/Documents/NetBeansProjects/crudpi/src/crudpi/GUI/viewComptes.fxml</file>
-            <file>file:/C:/Users/ANAS/Documents/NetBeansProjects/crudpi/src/crudpi/utils/connexion.java</file>
-            <file>file:/C:/Users/ANAS/Documents/NetBeansProjects/crudpi/src/crudpi/Crudpi.java</file>
-            <file>file:/C:/Users/ANAS/Documents/NetBeansProjects/crudpi/src/crudpi/entities/comptesBancaire.java</file>
             <file>file:/C:/Users/ANAS/Documents/NetBeansProjects/crudpi/src/crudpi/services/compteBancaireCRUD.java</file>
+            <file>file:/C:/Users/ANAS/Documents/NetBeansProjects/crudpi/src/crudpi/entities/comptesBancaire.java</file>
+            <file>file:/C:/Users/ANAS/Documents/NetBeansProjects/crudpi/src/crudpi/GUI/viewComptes.fxml</file>
+            <file>file:/C:/Users/ANAS/Documents/NetBeansProjects/crudpi/src/crudpi/services/transactionCRUD.java</file>
+            <file>file:/C:/Users/ANAS/Documents/NetBeansProjects/crudpi/src/crudpi/utils/connexion.java</file>
             <file>file:/C:/Users/ANAS/Documents/NetBeansProjects/crudpi/src/crudpi/services/qrcode.java</file>
             <file>file:/C:/Users/ANAS/Documents/NetBeansProjects/crudpi/src/crudpi/GUI/AjoutertransactionController.java</file>
-            <file>file:/C:/Users/ANAS/Documents/NetBeansProjects/crudpi/src/crudpi/GUI/firstwindow.java</file>
+            <file>file:/C:/Users/ANAS/Documents/NetBeansProjects/crudpi/src/crudpi/GUI/FrontcompteController.java</file>
+            <file>file:/C:/Users/ANAS/Documents/NetBeansProjects/crudpi/src/crudpi/Crudpi.java</file>
+            <file>file:/C:/Users/ANAS/Documents/NetBeansProjects/crudpi/src/crudpi/GUI/Liason_front_backController.java</file>
+            <file>file:/C:/Users/ANAS/Documents/NetBeansProjects/crudpi/src/crudpi/GUI/secondwindow.java</file>
+            <file>file:/C:/Users/ANAS/Documents/NetBeansProjects/crudpi/src/crudpi/GUI/frontcompte.fxml</file>
+            <file>file:/C:/Users/ANAS/Documents/NetBeansProjects/crudpi/src/crudpi/entities/Transaction.java</file>
+            <file>file:/C:/Users/ANAS/Documents/NetBeansProjects/crudpi/src/crudpi/GUI/Ajouter_comptebancaireController.java</file>
+            <file>file:/C:/Users/ANAS/Documents/NetBeansProjects/crudpi/src/crudpi/services/chart.java</file>
             <file>file:/C:/Users/ANAS/Documents/NetBeansProjects/crudpi/src/crudpi/GUI/ViewComptesController.java</file>
+            <file>file:/C:/Users/ANAS/Documents/NetBeansProjects/crudpi/src/crudpi/GUI/ViewTransactionsController.java</file>
+            <file>file:/C:/Users/ANAS/Documents/NetBeansProjects/crudpi/src/crudpi/GUI/firstwindow.java</file>
+            <file>file:/C:/Users/ANAS/Documents/NetBeansProjects/crudpi/src/crudpi/GUI/liason_front_back.fxml</file>
         </group>
     </open-files>
 </project-private>

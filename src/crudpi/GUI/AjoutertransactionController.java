@@ -31,27 +31,31 @@ import javafx.scene.control.TextField;
 public class AjoutertransactionController implements Initializable {
 
     @FXML
-    private TextField tfcompte_source_id;
+    private Label tfcompte_source_id;
     @FXML
-    private TextField tfnom;
+    private Label tfnom;
     @FXML
-    private TextField tfprenom;
+    private Label tfprenom;
     @FXML
-    private TextField tfemail;
+    private Label tfemail;
     @FXML
-    private TextField tfnum_tlfn;
+    private Label tfnum_tlfn;
     @FXML
-    private TextField tf_compte_destination;
+    private Label tf_compte_destination;
     @FXML
-    private TextField tfmontant;
+    private Label tfmontant;
     @FXML
     private Button btnajoutertransaction;
     @FXML
     private Button btnmodifier_transaction;
     @FXML
+    private Label idtf;
+    @FXML
     private TextField idf;
     @FXML
     private Button btnlistetransactions;
+     @FXML
+    private PieChart pieChart;
 
     /**
      * Initializes the controller class.
@@ -64,12 +68,13 @@ public class AjoutertransactionController implements Initializable {
     return field != null && !field.isEmpty();
     }
      private boolean validateForm() {
-         int compte_source_id = Integer.parseInt(tfcompte_source_id.getText());
+      // comptesBancaire compte_source_id = new comptesBancaire(Integer.parseInt(tfcompte_source_id.getText()));
+
          String nom = tfnom.getText();
         String prenom= tfprenom.getText();
         String email = tfemail.getText();
         int num_tlfn = Integer.parseInt(tfnum_tlfn.getText());
-        int compte_destination = Integer.parseInt(tf_compte_destination.getText());
+      // comptesBancaire compte_destination = Integer.parseInt(tf_compte_destination.getText());
         float montant = Float.valueOf(tfmontant.getText());
         
         
@@ -101,37 +106,37 @@ public class AjoutertransactionController implements Initializable {
     }
    }
 
-    @FXML
+         @FXML
     private void ajoutertransaction(ActionEvent event) {
-          if(validateForm()){
-        int compte_source_id = Integer.parseInt(tfcompte_source_id.getText());
-        String nom = tfnom.getText();
-        String prenom= tfprenom.getText();
-        String email = tfemail.getText();
-        int num_tlfn = Integer.parseInt(tfnum_tlfn.getText());
-         int compte_destination = Integer.parseInt(tf_compte_destination.getText());
-         float montant = Float.valueOf(tfmontant.getText());
-         if(montant<0f || num_tlfn<0){
-           Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("Validate Form");
-            alert.setHeaderText(null);
-            alert.setContentText("solde_initial or num_tlfn invalid");
-            alert.showAndWait(); 
-        }
-        else{
-        Transaction t = new Transaction(compte_source_id,nom,prenom,email,num_tlfn,compte_destination,montant);
+if (validateForm()) {
+    int compte_source_id = Integer.parseInt(tfcompte_source_id.getText());
+    String nom = tfnom.getText();
+    String prenom = tfprenom.getText();
+    String email = tfemail.getText();
+    int num_tlfn = Integer.parseInt(tfnum_tlfn.getText());
+    int compte_destination_id = Integer.parseInt(tf_compte_destination.getText());
+    float montant = Float.valueOf(tfmontant.getText());
+    if (montant < 0f || num_tlfn < 0) {
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setTitle("Validate Form");
+        alert.setHeaderText(null);
+        alert.setContentText("solde_initial or num_tlfn invalid");
+        alert.showAndWait(); 
+    } else {
+        compteBancaireCRUD comptesBancaireCrud = new compteBancaireCRUD();
+        comptesBancaire compte_source = comptesBancaireCrud.find(compte_source_id);
+        comptesBancaire compte_destination = comptesBancaireCrud.find(compte_destination_id);
+        Transaction t = new Transaction(compte_source, nom, prenom, email, num_tlfn, compte_destination, montant);
         System.out.println(t);
         transactionCRUD tran = new transactionCRUD();
-        
         tran.addEntity(t);
         showtransaction();
-        }
-        }
-        else{
-            System.out.println("Invalid champ");
-        }
-         
     }
+} else {
+    System.out.println("Invalid champ");
+}
+
+}
 
     @FXML
    

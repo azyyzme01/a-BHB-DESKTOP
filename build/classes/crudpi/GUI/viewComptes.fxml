@@ -6,9 +6,9 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="494.0" prefWidth="897.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="crudpi.GUI.ViewComptesController">
+<AnchorPane id="AnchorPane" prefHeight="606.0" prefWidth="1121.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="crudpi.GUI.ViewComptesController">
    <children>
-      <TableView fx:id="tableview" layoutX="-1.0" layoutY="48.0" prefHeight="351.0" prefWidth="793.0">
+      <TableView fx:id="tableview" layoutX="-1.0" layoutY="48.0" prefHeight="351.0" prefWidth="1040.0">
         <columns>
           <TableColumn fx:id="col1" prefWidth="75.0" text="id" />
           <TableColumn fx:id="col2" prefWidth="75.0" text="nom" />
@@ -23,5 +23,6 @@
       <Button fx:id="pdf" layoutX="198.0" layoutY="14.0" mnemonicParsing="false" onAction="#pdf" text="pdf" />
       <Button layoutX="324.0" layoutY="14.0" mnemonicParsing="false" onAction="#recherche" text="recherche" />
       <TextField fx:id="recherche" layoutX="409.0" layoutY="14.0" />
+      <Button fx:id="btnvoirtransaction" layoutX="691.0" layoutY="426.0" mnemonicParsing="false" onAction="#voirtransaction" text="voir les transaction" />
    </children>
 </AnchorPane>

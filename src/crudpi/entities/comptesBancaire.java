@@ -5,11 +5,13 @@
  */
 package crudpi.entities;
 
+import com.mysql.jdbc.Constants;
+
 /**
  *
  * @author ANAS
  */
-public class comptesBancaire {
+public class comptesBancaire  {
     int id;
     String nom;
     String prenom;
@@ -91,4 +93,5 @@ public class comptesBancaire {
     }
     
     
+   
 }

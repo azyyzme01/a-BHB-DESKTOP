@@ -7,23 +7,23 @@
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="crudpi.GUI.AjoutertransactionController">
    <children>
-      <Label layoutX="30.0" layoutY="26.0" prefHeight="21.0" prefWidth="135.0" text="compte_source_id" />
-      <Label layoutX="68.0" layoutY="66.0" text="nom" />
-      <Label layoutX="57.0" layoutY="103.0" text="prenom" />
-      <Label layoutX="65.0" layoutY="142.0" text="email" />
-      <Label layoutX="54.0" layoutY="179.0" text="num_tlfn" />
-      <Label layoutX="32.0" layoutY="225.0" text="compte_destination" />
-      <Label layoutX="55.0" layoutY="268.0" text="montant" />
-      <TextField fx:id="tfcompte_source_id" layoutX="193.0" layoutY="21.0" />
-      <TextField fx:id="tfnom" layoutX="193.0" layoutY="61.0" />
-      <TextField fx:id="tfprenom" layoutX="193.0" layoutY="98.0" />
-      <TextField fx:id="tfemail" layoutX="193.0" layoutY="137.0" />
-      <TextField fx:id="tfnum_tlfn" layoutX="193.0" layoutY="174.0" />
-      <TextField fx:id="tf_compte_destination" layoutX="193.0" layoutY="220.0" />
-      <TextField fx:id="tfmontant" layoutX="193.0" layoutY="263.0" />
+      <Label fx:id="tfcompte_source_id" layoutX="30.0" layoutY="26.0" prefHeight="21.0" prefWidth="135.0" text="compte_source_id" />
+      <Label fx:id="tfnom" layoutX="68.0" layoutY="66.0" text="nom" />
+      <Label fx:id="tfprenom" layoutX="57.0" layoutY="103.0" text="prenom" />
+      <Label fx:id="tfemail" layoutX="65.0" layoutY="142.0" text="email" />
+      <Label fx:id="tfnum_tlfn" layoutX="54.0" layoutY="179.0" text="num_tlfn" />
+      <Label fx:id="tf_compte_destination" layoutX="32.0" layoutY="225.0" text="compte_destination" />
+      <Label fx:id="tfmontant" layoutX="55.0" layoutY="268.0" text="montant" />
+      <TextField layoutX="193.0" layoutY="21.0" />
+      <TextField layoutX="193.0" layoutY="61.0" />
+      <TextField layoutX="193.0" layoutY="98.0" />
+      <TextField layoutX="193.0" layoutY="137.0" />
+      <TextField layoutX="193.0" layoutY="174.0" />
+      <TextField layoutX="193.0" layoutY="220.0" />
+      <TextField layoutX="193.0" layoutY="263.0" />
       <Button fx:id="btnajoutertransaction" layoutX="65.0" layoutY="334.0" mnemonicParsing="false" onAction="#ajoutertransaction" text="ajouter" />
       <Button fx:id="btnmodifier_transaction" layoutX="488.0" layoutY="303.0" mnemonicParsing="false" onAction="#modifier_transaction" text="modifier" />
-      <Label layoutX="394.0" layoutY="268.0" text="id" />
+      <Label fx:id="idtf" layoutX="394.0" layoutY="268.0" text="id" />
       <TextField fx:id="idf" layoutX="448.0" layoutY="263.0" prefHeight="31.0" prefWidth="155.0" />
       <Button fx:id="btnlistetransactions" layoutX="173.0" layoutY="334.0" mnemonicParsing="false" onAction="#listetransactions" text="voir liste des transactions" />
    </children>
