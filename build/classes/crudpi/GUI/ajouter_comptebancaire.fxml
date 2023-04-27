@@ -8,7 +8,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="672.0" prefWidth="1062.0" style="-fx-background-color: orange;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="crudpi.GUI.Ajouter_comptebancaireController">
+<AnchorPane id="AnchorPane" prefHeight="672.0" prefWidth="1062.0" style="-fx-background-color: #87CEEB;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="crudpi.GUI.Ajouter_comptebancaireController">
    <children>
       <Label layoutX="55.0" layoutY="33.0" text="nom" />
       <Label layoutX="55.0" layoutY="91.0" text="prenom" />
@@ -21,10 +21,10 @@
       <TextField fx:id="tfnum_tlfn" layoutX="187.0" layoutY="196.0" />
       <TextField fx:id="tfsolde_initial" layoutX="187.0" layoutY="239.0" />
       <Button fx:id="bntajoutercompte" layoutX="71.0" layoutY="324.0" mnemonicParsing="false" onAction="#ajoutercompte" text="ajouter" />
-      <Button fx:id="btnmodifier_compte" layoutX="481.0" layoutY="309.0" mnemonicParsing="false" onAction="#modifier_compte" text="modifier" />
+      <Button fx:id="btnmodifier_compte" layoutX="515.0" layoutY="297.0" mnemonicParsing="false" onAction="#modifier_compte" text="modifier" />
       <TextField fx:id="idf" layoutX="519.0" layoutY="255.0" prefHeight="31.0" prefWidth="67.0" />
-      <Label layoutX="409.0" layoutY="260.0" text="id_compte" />
-      <Button fx:id="btnlistecompte" layoutX="195.0" layoutY="325.0" mnemonicParsing="false" onAction="#listecompte" text="liste des comptes" />
+      <Label layoutX="437.0" layoutY="260.0" text="id_compte" />
+      <Button fx:id="btnlistecompte" layoutX="195.0" layoutY="325.0" mnemonicParsing="false" onAction="#listecompte" prefHeight="31.0" prefWidth="224.0" text="liste des comptes" />
       <CheckBox fx:id="tfbloc" layoutX="187.0" layoutY="286.0" mnemonicParsing="false" text="CheckBox" />
       <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="659.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
          <image>

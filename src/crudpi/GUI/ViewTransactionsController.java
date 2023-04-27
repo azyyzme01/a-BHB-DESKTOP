@@ -61,6 +61,8 @@ public class ViewTransactionsController implements Initializable {
     private Button btnajoutertransaction;
     @FXML
     private Button btnstat;
+    @FXML
+    private Button btnmenu;
 
     /**
      * Initializes the controller class.
@@ -140,5 +142,19 @@ public class ViewTransactionsController implements Initializable {
         Stage stage = new Stage();
         chartpie.start(stage);
         
+    }
+
+    @FXML
+    private void menu(ActionEvent event) {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("liaison_front_back.fxml"));
+       try{
+       Parent root = loader.load(); 
+
+        btnmenu.getScene().setRoot(root);
+       
+       }catch(IOException ex){
+       
+        System.out.println(ex.getMessage());
+    }
     }
 }

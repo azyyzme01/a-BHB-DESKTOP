@@ -27,7 +27,7 @@ public class firstwindow extends Application {
     @Override
     public void start(Stage primaryStage) {
         try {
-            Parent root =FXMLLoader.load(getClass().getResource("ajouter_comptebancaire.fxml"));
+            Parent root =FXMLLoader.load(getClass().getResource("liaison_front_back.fxml"));
             
             Scene scene = new Scene(root);
             

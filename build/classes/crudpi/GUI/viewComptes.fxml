@@ -8,7 +8,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="1000.0" prefWidth="1078.0" style="-fx-background-color: orange;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="crudpi.GUI.ViewComptesController">
+<AnchorPane id="AnchorPane" prefHeight="1000.0" prefWidth="1078.0" style="-fx-background-color: #87CEEB;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="crudpi.GUI.ViewComptesController">
    <children>
       <TableView fx:id="tableview" layoutX="39.0" layoutY="80.0" prefHeight="351.0" prefWidth="794.0">
         <columns>
@@ -21,11 +21,11 @@
             <TableColumn fx:id="delete" prefWidth="75.0" text="delete" />
         </columns>
       </TableView>
-      <Button fx:id="addBtn" layoutX="28.0" layoutY="14.0" mnemonicParsing="false" onAction="#showAdd" prefHeight="31.0" prefWidth="141.0" text="Add Compte" />
-      <Button fx:id="pdf" layoutX="198.0" layoutY="14.0" mnemonicParsing="false" onAction="#pdf" text="pdf" />
-      <Button layoutX="277.0" layoutY="14.0" mnemonicParsing="false" onAction="#recherche" prefHeight="43.0" prefWidth="132.0" text="recherche" />
-      <TextField fx:id="recherche" layoutX="409.0" layoutY="14.0" />
-      <ImageView fitHeight="109.0" fitWidth="135.0" layoutX="979.0" pickOnBounds="true" preserveRatio="true">
+      <Button fx:id="addBtn" cache="true" layoutX="64.0" layoutY="477.0" mnemonicParsing="false" onAction="#showAdd" prefHeight="31.0" prefWidth="272.0" text="Add Compte" />
+      <Button fx:id="pdf" layoutX="64.0" layoutY="20.0" mnemonicParsing="false" onAction="#pdf" prefHeight="31.0" prefWidth="174.0" text="imprimer" />
+      <Button layoutX="277.0" layoutY="14.0" mnemonicParsing="false" onAction="#recherche" prefHeight="43.0" prefWidth="152.0" text="recherche" />
+      <TextField fx:id="recherche" layoutX="409.0" layoutY="14.0" prefHeight="43.0" prefWidth="286.0" />
+      <ImageView fitHeight="109.0" fitWidth="114.0" layoutX="863.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@342797433_222721417043255_7161444081653625976_n.png" />
          </image>
@@ -33,6 +33,23 @@
       <ImageView fitHeight="23.0" fitWidth="26.0" layoutX="283.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@clipart-icon-lupe-loop-search-free-vector.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="23.0" fitWidth="25.0" layoutX="73.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@téléchargement.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="23.0" fitWidth="38.0" layoutX="77.0" layoutY="481.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@téléchargement%20(1).png" />
+         </image>
+      </ImageView>
+      <Button fx:id="btnvoirtransaction" layoutX="377.0" layoutY="477.0" mnemonicParsing="false" onAction="#voirtransaction" prefHeight="31.0" prefWidth="195.0" text="voir transaction" />
+      <Button fx:id="btnmenu" layoutX="651.0" layoutY="477.0" mnemonicParsing="false" onAction="#menu" prefHeight="31.0" prefWidth="195.0" text="Menu" />
+      <ImageView fitHeight="23.0" fitWidth="41.0" layoutX="377.0" layoutY="481.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@téléchargement%20(2).png" />
          </image>
       </ImageView>
    </children>

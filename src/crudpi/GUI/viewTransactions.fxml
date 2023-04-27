@@ -3,9 +3,11 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="414.0" prefWidth="835.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="crudpi.GUI.ViewTransactionsController">
+<AnchorPane id="AnchorPane" prefHeight="655.0" prefWidth="1020.0" style="-fx-background-color: #87CEEB;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="crudpi.GUI.ViewTransactionsController">
    <children>
       <TableView fx:id="tableview" layoutX="-1.0" layoutY="55.0" prefHeight="345.0" prefWidth="835.0">
         <columns>
@@ -21,6 +23,12 @@
         </columns>
       </TableView>
       <Button fx:id="btnajoutertransaction" layoutX="64.0" layoutY="14.0" mnemonicParsing="false" onAction="#ajoutertransaction" text="ajouter transaction " />
-      <Button fx:id="btnstat" layoutX="266.0" layoutY="14.0" mnemonicParsing="false" onAction="#DisplayChartPie" text="stat" />
+      <Button fx:id="btnstat" layoutX="348.0" layoutY="14.0" mnemonicParsing="false" onAction="#DisplayChartPie" prefHeight="31.0" prefWidth="120.0" text="stat" />
+      <ImageView fitHeight="31.0" fitWidth="44.0" layoutX="348.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@téléchargement%20(3).png" />
+         </image>
+      </ImageView>
+      <Button fx:id="btnmenu" layoutX="686.0" layoutY="446.0" mnemonicParsing="false" onAction="#menu" text="Menu" />
    </children>
 </AnchorPane>

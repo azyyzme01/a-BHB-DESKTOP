@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package crudpi.GUI;
 
 import java.net.URL;
@@ -50,7 +46,7 @@ import javafx.scene.paint.Color;
  *
  * @author ANAS
  */
-public class ViewComptesController implements Initializable {
+public class ComptefrontController implements Initializable {
 
     @FXML
      TableView<comptesBancaire> tableview;
@@ -66,24 +62,19 @@ public class ViewComptesController implements Initializable {
      TableColumn<comptesBancaire, Float> col6;
     @FXML
      TableColumn<comptesBancaire, String> col4;
-    @FXML
-    private Button addBtn;
-    @FXML
-    private TableColumn<comptesBancaire, Void> delete;
+   
     @FXML
     private Button pdf;
     @FXML
-    private TextField recherche;
-    @FXML
-    private Button btnvoirtransaction;
+    private Button btnfairetransaction;
     @FXML
     private Button btnmenu;
+    
    
 
     /**
      * Initializes the controller class.
      */
-    @Override
     public void initialize(URL url, ResourceBundle rb) {
    
        
@@ -224,8 +215,8 @@ public class ViewComptesController implements Initializable {
                         // Retrieve reservation information from the database
                         comptesBancaire res = getTableView().getItems().get(getIndex());
 
-                        String compteinfo = " identifiant: " + res.getId() + "\n nom: " + res.getNom() + "\n prenom: " + 
-                                 "\n solde_initial: " + res.getSolde_initial();
+                        String compteinfo = " rib compte: " + res.getId() + "\n nom: " + res.getNom() + "\n prenom: " + 
+                                res.getPrenom() + "\n email: " + res.getEmail() + "\n num_tlfn: " + res.getNum_tlfn() + "\n solde_initial: " + res.getSolde_initial();
 
                         // Generate QR code
                         qrcode qrCodeGenerator = new qrcode();
@@ -264,64 +255,9 @@ public class ViewComptesController implements Initializable {
 // Add QR code column to the table
 tableview.getColumns().add(qrCodeCol);
     
-Callback<TableColumn<comptesBancaire, Void>, TableCell<comptesBancaire, Void>> cellFactory = new Callback<TableColumn<comptesBancaire, Void>, TableCell<comptesBancaire, Void>>() {
-    @Override
-    public TableCell<comptesBancaire, Void> call(final TableColumn<comptesBancaire, Void> param) {
-        final TableCell<comptesBancaire, Void> cell = new TableCell<comptesBancaire, Void>() {
-            private final Button btn = new Button("Supprimer");
-            {
-                btn.setOnAction((ActionEvent event) -> {
-                    int rowIndex = getTableRow().getIndex();
-                    compteBancaireCRUD pcd = new compteBancaireCRUD();
-                    if (tableview.getItems().get(rowIndex).isBl()) {
-                          btn.setStyle("-fx-background-color: blue; -fx-text-fill: white;");
-                        Alert alert = new Alert(Alert.AlertType.WARNING);
-                        alert.setTitle("Blocage");
-                        alert.setHeaderText(null);
-                        alert.setContentText("Le compte est bloqué");
-                        alert.showAndWait();
-                    } else {
-                       pcd.deleteEntity(col1.getCellObservableValue(rowIndex).getValue());
-                    }
-                });
-              
-            }                   
-                  @Override
-        public void updateItem(Void item, boolean empty) {
-            super.updateItem(item, empty);
-            if (empty) {
-                setGraphic(null);
-            } else {
-                setGraphic(btn);
-                comptesBancaire cmpb= getTableView().getItems().get(getIndex());
-                if (cmpb.isBl()) {
-                   btn.setStyle("-fx-background-color: blue; -fx-text-fill: white;");
-
-                }
-            }
-        }
-                };
-               return cell;
-            }
-        };
-       delete.setCellFactory(cellFactory);
-        
-        
-}
-
-    @FXML
-         public void showAdd(){
-         FXMLLoader loader = new FXMLLoader(getClass().getResource("ajouter_comptebancaire.fxml"));
-       try{
-       Parent root = loader.load(); 
-
-        addBtn.getScene().setRoot(root);
-       
-       }catch(IOException ex){
-       
-        System.out.println(ex.getMessage());
     }
-   }
+
+   
 
     @FXML
     private void pdf(ActionEvent event) {
@@ -342,48 +278,12 @@ Callback<TableColumn<comptesBancaire, Void>, TableCell<comptesBancaire, Void>> c
     }
 
     @FXML
-    private void recherche(ActionEvent event) {
-        
-        compteBancaireCRUD evc = new compteBancaireCRUD();
-
-    List<comptesBancaire> liste = evc.entitiesList();
-    ObservableList<comptesBancaire> olist = FXCollections.observableArrayList(liste);
-    try {
-
-        tableview.setItems(olist);
-        FilteredList<comptesBancaire> filtredData = new FilteredList<>(olist, b -> true);
-        recherche.textProperty().addListener((observable, olValue, newValue) -> {
-            filtredData.setPredicate(person -> {
-                if (newValue == null || newValue.isEmpty()) {
-                    return true;
-                }
-                String lowerCaseFilter = newValue.toLowerCase();
-
-                if (person.getNom().toLowerCase().indexOf(lowerCaseFilter) != -1) {
-                    return true;
-                } else if (String.valueOf(person.getPrenom()).indexOf(lowerCaseFilter) != -1)
-                    return true;
-                else
-                    return false;
-            });
-        });
-        SortedList<comptesBancaire> sortedData = new SortedList<comptesBancaire>(filtredData);
-        sortedData.comparatorProperty().bind(tableview.comparatorProperty());
-        tableview.setItems(sortedData);
-
-    } catch (Exception e) {
-        System.out.println(e.getMessage());
-
-    }
-    }
-
-    @FXML
-    private void voirtransaction(ActionEvent event) {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("viewTransactions.fxml"));
+    private void fairetransaction(ActionEvent event) {
+         FXMLLoader loader = new FXMLLoader(getClass().getResource("ajoutertransaction.fxml"));
        try{
        Parent root = loader.load(); 
 
-        btnvoirtransaction.getScene().setRoot(root);
+        btnfairetransaction.getScene().setRoot(root);
        
        }catch(IOException ex){
        
@@ -404,7 +304,10 @@ Callback<TableColumn<comptesBancaire, Void>, TableCell<comptesBancaire, Void>> c
         System.out.println(ex.getMessage());
     }
     }
+
+    
 }
+
 
 
    
@@ -417,4 +320,5 @@ Callback<TableColumn<comptesBancaire, Void>, TableCell<comptesBancaire, Void>> c
 
  
     
+
 
