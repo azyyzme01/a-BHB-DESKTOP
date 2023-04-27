@@ -17,6 +17,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextField;
 
 /**
@@ -46,6 +47,8 @@ public class Ajouter_comptebancaireController implements Initializable {
     private TextField idf;
     @FXML
     private Button btnlistecompte;
+    @FXML
+    private CheckBox tfbloc;
 
     /**
      * Initializes the controller class.
@@ -66,7 +69,7 @@ public class Ajouter_comptebancaireController implements Initializable {
         float solde_initial = Float.valueOf(tfsolde_initial.getText());
         
         
-        if  (nom==null || !isFieldNotEmpty(prenom) || !isFieldNotEmpty(email) || !isFieldNotEmpty(email))
+        if  (!isFieldNotEmpty(nom) || !isFieldNotEmpty(prenom) || !isFieldNotEmpty(email))
                  {
             
             Alert alert = new Alert(Alert.AlertType.WARNING);
@@ -74,7 +77,7 @@ public class Ajouter_comptebancaireController implements Initializable {
             alert.setHeaderText(null);
             alert.setContentText("All fields must be filled!");
             alert.showAndWait();
-            return true;
+            return false;
         }
         return true;
         
@@ -124,29 +127,33 @@ public class Ajouter_comptebancaireController implements Initializable {
          
     }
      @FXML
-    public void modifier_compte(ActionEvent event){
+ 
+public void modifier_compte(ActionEvent event){
         
-        int id = Integer.parseInt(idf.getText());
-       String nom = tfnom.getText();
-        String prenom= tfprenom.getText();
-        String email = tfemail.getText();
-        int num_tlfn = Integer.parseInt(tfnum_tlfn.getText());
-        float solde_initial = Float.valueOf(tfsolde_initial.getText());
-       
-         if(solde_initial<0f || num_tlfn<0){
-           Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("Validate Form");
-            alert.setHeaderText(null);
-            alert.setContentText("solde_initial or num_tlfn invalid");
-            alert.showAndWait(); 
-        }
-        else{
-        comptesBancaire compte = new comptesBancaire(nom,prenom,email,num_tlfn,solde_initial);
-        compteBancaireCRUD cb = new compteBancaireCRUD();
-        cb.updateEntity(id,nom,prenom,email,num_tlfn,solde_initial);
-        }
-        
+    int id = Integer.parseInt(idf.getText());
+    String nom = tfnom.getText();
+    String prenom= tfprenom.getText();
+    String email = tfemail.getText();
+    int num_tlfn = Integer.parseInt(tfnum_tlfn.getText());
+   boolean bloc = tfbloc.isSelected();
+
+    float solde_initial =  Float.valueOf(tfsolde_initial.getText());
+    
+      if(solde_initial<0f || num_tlfn<0){
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setTitle("Validate Form");
+        alert.setHeaderText(null);
+        alert.setContentText("solde_initial or num_tlfn invalid");
+        alert.showAndWait(); 
     }
+    else{
+        compteBancaireCRUD cb = new compteBancaireCRUD();
+        comptesBancaire ct=new comptesBancaire(id, nom, prenom, email, num_tlfn, solde_initial, bloc);
+      
+        cb.updateEntity(ct);   
+    }  
+}
+
 
 //    @FXML
 //    private void deleteEntity(ActionEvent event) {

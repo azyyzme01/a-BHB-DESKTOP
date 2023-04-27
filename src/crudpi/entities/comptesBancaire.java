@@ -5,19 +5,26 @@
  */
 package crudpi.entities;
 
-import com.mysql.jdbc.Constants;
-
 /**
  *
  * @author ANAS
  */
-public class comptesBancaire  {
+public class comptesBancaire {
     int id;
     String nom;
     String prenom;
     String email;
     int num_tlfn;
     float solde_initial;
+    boolean blolc;
+
+    public boolean isBl() {
+        return blolc;
+    }
+
+    public void setBl(boolean bl) {
+        this.blolc = bl;
+    }
 
     public comptesBancaire(String nom, String prenom, String email, int num_tlfn, float solde_initial) {
         this.nom = nom;
@@ -25,7 +32,19 @@ public class comptesBancaire  {
         this.email = email;
         this.num_tlfn = num_tlfn;
         this.solde_initial = solde_initial;
+       
     }
+
+    public comptesBancaire(int id, String nom, String prenom, String email, int num_tlfn, float solde_initial, boolean bl) {
+        this.id = id;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.email = email;
+        this.num_tlfn = num_tlfn;
+        this.solde_initial = solde_initial;
+        this.blolc = bl;
+    }
+    
 
     public comptesBancaire(int id, String nom, String prenom, String email, int num_tlfn, float solde_initial) {
         this.id = id;
@@ -53,8 +72,10 @@ public class comptesBancaire  {
 
     @Override
     public String toString() {
-        return "comptesBancaire{" + "id=" + id + ", nom=" + nom + ", prenom=" + prenom + ", email=" + email + ", num_tlfn=" + num_tlfn + ", solde_initial=" + solde_initial + '}';
+        return "comptesBancaire{" + "id=" + id + ", nom=" + nom + ", prenom=" + prenom + ", email=" + email + ", num_tlfn=" + num_tlfn + ", solde_initial=" + solde_initial + ", blolc=" + blolc + '}';
     }
+
+    
 
     public void setNom(String nom) {
         this.nom = nom;
@@ -93,5 +114,4 @@ public class comptesBancaire  {
     }
     
     
-   
 }

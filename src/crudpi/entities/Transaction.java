@@ -5,20 +5,21 @@
  */
 package crudpi.entities;
 
-import crudpi.entities.comptesBancaire;
-import crudpi.services.compteBancaireCRUD;
-
+/**
+ *
+ * @author ANAS
+ */
 public class Transaction {
      private int id;
-     private comptesBancaire compte_source_id;
-     private String nom;
-     private String prenom;
-     private String email;
-     private int num_tlfn;
-     private comptesBancaire compte_destination;
-     private float montant;
+     private int compte_source_id;
+     String nom;
+    String prenom;
+    String email;
+    int num_tlfn;
+    int compte_destination;
+    float montant ;
 
-     public Transaction(int id, comptesBancaire compte_source_id, String nom, String prenom, String email, int num_tlfn, comptesBancaire compte_destination, float montant) {
+    public Transaction(int id, int compte_source_id, String nom, String prenom, String email, int num_tlfn, int compte_destination, float montant) {
         this.id = id;
         this.compte_source_id = compte_source_id;
         this.nom = nom;
@@ -29,7 +30,7 @@ public class Transaction {
         this.montant = montant;
     }
 
-    public Transaction(comptesBancaire compte_source_id, String nom, String prenom, String email, int num_tlfn, comptesBancaire compte_destination, float montant) {
+    public Transaction(int compte_source_id, String nom, String prenom, String email, int num_tlfn, int compte_destination, float montant) {
         this.compte_source_id = compte_source_id;
         this.nom = nom;
         this.prenom = prenom;
@@ -50,11 +51,11 @@ public class Transaction {
         this.id = id;
     }
 
-    public comptesBancaire getCompte_source_id() {
+    public int getCompte_source_id() {
         return compte_source_id;
     }
 
-    public void setCompte_source_id(comptesBancaire compte_source_id) {
+    public void setCompte_source_id(int compte_source_id) {
         this.compte_source_id = compte_source_id;
     }
 
@@ -90,11 +91,11 @@ public class Transaction {
         this.num_tlfn = num_tlfn;
     }
 
-    public comptesBancaire getCompte_destination() {
+    public int getCompte_destination() {
         return compte_destination;
     }
 
-    public void setCompte_destination(comptesBancaire compte_destination) {
+    public void setCompte_destination(int compte_destination) {
         this.compte_destination = compte_destination;
     }
 
@@ -111,5 +112,6 @@ public class Transaction {
         return "Transaction{" + "id=" + id + ", compte_source_id=" + compte_source_id + ", nom=" + nom + ", prenom=" + prenom + ", email=" + email + ", num_tlfn=" + num_tlfn + ", compte_destination=" + compte_destination + ", montant=" + montant + '}';
     }
 
+   
     
 }

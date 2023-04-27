@@ -38,6 +38,9 @@ public class compteBancaireCRUD implements entityCRUD<comptesBancaire> {
     stmp.setString(3, email);
     stmp.setInt(4, num_tlfn);
     stmp.setFloat(5, solde);
+//    stmp.executeUpdate();
+  //          System.out.println("ajout successsss");
+ 
 
     int rowsAffected = stmp.executeUpdate();
 
@@ -96,33 +99,32 @@ public class compteBancaireCRUD implements entityCRUD<comptesBancaire> {
         }
      }
      
-      public void updateEntity(int id,String nom,String prenom,String email,int num_tlfn,float solde_intial){
-        
-         try{
-        String requete = "UPDATE comptebancaire set nom = ?,prenom = ?,email = ?,num_tlfn  = ?,solde_initial=? WHERE id = ?";
-        PreparedStatement st=connexion.getInstance()
-                .getCnx().prepareStatement(requete);
-            
-              st.setString(1, nom);
-              st.setString(2, prenom);
-              st.setString(3, email);
-              st.setInt(4, num_tlfn);
-              st.setFloat(5, solde_intial);
-                      st.setInt(6, id);
+      public void updateEntity(comptesBancaire c) {
+    try {
+        String requete = "UPDATE `comptebancaire` SET `nom` = ?, `prenom` = ?, `email` = ?, `num_tlfn` =?, `solde_initial` =?, `blolc` = ? WHERE `comptebancaire`.`id` = ?";
+        PreparedStatement st = connexion.getInstance().getCnx().prepareStatement(requete);
+
+        st.setString(1, c.getNom());
+        st.setString(2, c.getPrenom());
+        st.setString(3, c.getEmail());
+        st.setInt(4, c.getNum_tlfn());
+        st.setFloat(5, c.getSolde_initial());
+        st.setBoolean(6, c.isBl());
+        st.setInt(7, c.getId());
 
         st.executeUpdate();
-        }catch (SQLException ex) {
-            System.out.println(ex.getMessage());
-        }
-        }
+            System.out.println("donnne");
+    } catch (SQLException ex) {
+        System.out.println(ex.getMessage());
+    }
+}
+
       
-       public static List<comptesBancaire> getAll() {
+    public static List<comptesBancaire> getAll() {
     List<comptesBancaire> comptesBancaireList = new ArrayList<>();
-    String requete = "SELECT * FROM comptebancaire" ;
-    
-    try (
-            PreparedStatement statement=connexion.getInstance()
-                .getCnx().prepareStatement(requete);
+    String requete = "SELECT * FROM comptebancaire";
+
+    try (PreparedStatement statement = connexion.getInstance().getCnx().prepareStatement(requete);
          ResultSet resultSet = statement.executeQuery()) {
         while (resultSet.next()) {
             comptesBancaire comptesBancaire = new comptesBancaire();
@@ -132,40 +134,14 @@ public class compteBancaireCRUD implements entityCRUD<comptesBancaire> {
             comptesBancaire.setEmail(resultSet.getString("email"));
             comptesBancaire.setNum_tlfn(resultSet.getInt("num_tlfn"));
             comptesBancaire.setSolde_initial(resultSet.getFloat("solde_initial"));
-
+            comptesBancaire.setBl(resultSet.getBoolean("blolc"));
+            
             comptesBancaireList.add(comptesBancaire);
         }
     } catch (SQLException e) {
         e.printStackTrace();
     }
     return comptesBancaireList;
-       }
-       
-       
-         public comptesBancaire find(int id) {
-        comptesBancaire compte = null;
-        String query = "SELECT * FROM comptebancaire WHERE id = ?";
-         try (
-            PreparedStatement statement=connexion.getInstance()
-                .getCnx().prepareStatement(query);
-         ResultSet rs = statement.executeQuery()){
-             
-            
-             
-            if (rs.next()) {
-                compte = new comptesBancaire();
-                compte.setId(rs.getInt("id"));
-                compte.setNom(rs.getString("nom"));
-                compte.setPrenom(rs.getString("prenom"));
-                compte.setEmail(rs.getString("email"));
-                compte.setSolde_initial(rs.getFloat("solde_initial"));
-                compte.setNum_tlfn(rs.getInt("num_tlfn"));
-            }
-            rs.close();
-            
-        } catch (SQLException ex) {
-            System.err.println("Error during find compte bancaire: " + ex.getMessage());
-        }
-        return compte;
-    }
-       }
+}
+
+}

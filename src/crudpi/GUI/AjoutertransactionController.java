@@ -9,8 +9,14 @@ import crudpi.entities.Transaction;
 import crudpi.entities.comptesBancaire;
 import crudpi.services.compteBancaireCRUD;
 import crudpi.services.transactionCRUD;
+import crudpi.utils.connexion;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -22,6 +28,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javax.management.Query;
 
 /**
  * FXML Controller class
@@ -31,31 +38,27 @@ import javafx.scene.control.TextField;
 public class AjoutertransactionController implements Initializable {
 
     @FXML
-    private Label tfcompte_source_id;
+    private TextField tfcompte_source_id;
     @FXML
-    private Label tfnom;
+    private TextField tfnom;
     @FXML
-    private Label tfprenom;
+    private TextField tfprenom;
     @FXML
-    private Label tfemail;
+    private TextField tfemail;
     @FXML
-    private Label tfnum_tlfn;
+    private TextField tfnum_tlfn;
     @FXML
-    private Label tf_compte_destination;
+    private TextField tf_compte_destination;
     @FXML
-    private Label tfmontant;
+    private TextField tfmontant;
     @FXML
     private Button btnajoutertransaction;
     @FXML
     private Button btnmodifier_transaction;
     @FXML
-    private Label idtf;
-    @FXML
     private TextField idf;
     @FXML
     private Button btnlistetransactions;
-     @FXML
-    private PieChart pieChart;
 
     /**
      * Initializes the controller class.
@@ -68,13 +71,12 @@ public class AjoutertransactionController implements Initializable {
     return field != null && !field.isEmpty();
     }
      private boolean validateForm() {
-      // comptesBancaire compte_source_id = new comptesBancaire(Integer.parseInt(tfcompte_source_id.getText()));
-
+         int compte_source_id = Integer.parseInt(tfcompte_source_id.getText());
          String nom = tfnom.getText();
         String prenom= tfprenom.getText();
         String email = tfemail.getText();
         int num_tlfn = Integer.parseInt(tfnum_tlfn.getText());
-      // comptesBancaire compte_destination = Integer.parseInt(tf_compte_destination.getText());
+        int compte_destination = Integer.parseInt(tf_compte_destination.getText());
         float montant = Float.valueOf(tfmontant.getText());
         
         
@@ -105,38 +107,110 @@ public class AjoutertransactionController implements Initializable {
         System.out.println(ex.getMessage());
     }
    }
-
-         @FXML
-    private void ajoutertransaction(ActionEvent event) {
-if (validateForm()) {
-    int compte_source_id = Integer.parseInt(tfcompte_source_id.getText());
-    String nom = tfnom.getText();
-    String prenom = tfprenom.getText();
-    String email = tfemail.getText();
-    int num_tlfn = Integer.parseInt(tfnum_tlfn.getText());
-    int compte_destination_id = Integer.parseInt(tf_compte_destination.getText());
-    float montant = Float.valueOf(tfmontant.getText());
-    if (montant < 0f || num_tlfn < 0) {
-        Alert alert = new Alert(Alert.AlertType.WARNING);
-        alert.setTitle("Validate Form");
-        alert.setHeaderText(null);
-        alert.setContentText("solde_initial or num_tlfn invalid");
-        alert.showAndWait(); 
+         
+         
+  @FXML
+private void ajoutertransaction(ActionEvent event) {
+    if(validateForm()){
+        int compte_source_id = Integer.parseInt(tfcompte_source_id.getText());
+        String nom = tfnom.getText();
+        String prenom= tfprenom.getText();
+        String email = tfemail.getText();
+        int num_tlfn = Integer.parseInt(tfnum_tlfn.getText());
+        int compte_destination = Integer.parseInt(tf_compte_destination.getText());
+        float montant = Float.valueOf(tfmontant.getText());
+        if(montant<0f || num_tlfn<0){
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Validate Form");
+            alert.setHeaderText(null);
+            alert.setContentText("solde_initial or num_tlfn invalid");
+            alert.showAndWait(); 
+        }
+        else{
+            Connection cnx = connexion.getInstance().getCnx();
+            String sql1 = "SELECT * FROM comptebancaire WHERE id = ?";
+            String sql2 = "UPDATE comptebancaire SET solde_initial = ? WHERE id = ?";
+            try {
+                PreparedStatement ps1 = cnx.prepareStatement(sql1);
+                ps1.setInt(1, compte_source_id);
+                ResultSet rs1 = ps1.executeQuery();
+                PreparedStatement ps2 = cnx.prepareStatement(sql1);
+                ps2.setInt(1, compte_destination);
+                ResultSet rs2 = ps2.executeQuery();
+                if(!rs1.next()){
+                    Alert alert = new Alert(Alert.AlertType.WARNING);
+                    alert.setTitle("Compte source inexistant");
+                    alert.setHeaderText(null);
+                    alert.setContentText("Le compte source n'existe pas");
+                    alert.showAndWait();
+                } else if(!rs2.next()) {
+                    Alert alert = new Alert(Alert.AlertType.WARNING);
+                    alert.setTitle("Compte destination inexistant");
+                    alert.setHeaderText(null);
+                    alert.setContentText("Le compte destination n'existe pas");
+                    alert.showAndWait();
+                } else if(montant > rs1.getFloat("solde_initial")) {
+                    Alert alert = new Alert(Alert.AlertType.WARNING);
+                    alert.setTitle("Solde insuffisant");
+                    alert.setHeaderText(null);
+                    alert.setContentText("Le solde du compte source est insuffisant");
+                    alert.showAndWait();
+                } else {
+                    PreparedStatement ps3 = cnx.prepareStatement(sql2);
+                    ps3.setFloat(1, rs1.getFloat("solde_initial") - montant);
+                    ps3.setInt(2, compte_source_id);
+                    ps3.executeUpdate();
+                    PreparedStatement ps4 = cnx.prepareStatement(sql2);
+                    ps4.setFloat(1, rs2.getFloat("solde_initial") + montant);
+                    ps4.setInt(2, compte_destination);
+                    ps4.executeUpdate();
+                    Transaction t = new Transaction(compte_source_id, nom, prenom, email, num_tlfn, compte_destination, montant);
+                    transactionCRUD tran = new transactionCRUD();
+                    tran.addEntity(t);
+                    showtransaction();
+                }
+            } catch (SQLException ex) {
+                System.out.println(ex.getMessage());
+            }
+        }
     } else {
-        compteBancaireCRUD comptesBancaireCrud = new compteBancaireCRUD();
-        comptesBancaire compte_source = comptesBancaireCrud.find(compte_source_id);
-        comptesBancaire compte_destination = comptesBancaireCrud.find(compte_destination_id);
-        Transaction t = new Transaction(compte_source, nom, prenom, email, num_tlfn, compte_destination, montant);
-        System.out.println(t);
-        transactionCRUD tran = new transactionCRUD();
-        tran.addEntity(t);
-        showtransaction();
+        System.out.println("Invalid champ");
     }
-} else {
-    System.out.println("Invalid champ");
 }
 
-}
+
+
+//    @FXML
+//    private void ajoutertransaction(ActionEvent event) {
+//          if(validateForm()){
+//        int compte_source_id = Integer.parseInt(tfcompte_source_id.getText());
+//        String nom = tfnom.getText();
+//        String prenom= tfprenom.getText();
+//        String email = tfemail.getText();
+//        int num_tlfn = Integer.parseInt(tfnum_tlfn.getText());
+//         int compte_destination = Integer.parseInt(tf_compte_destination.getText());
+//         float montant = Float.valueOf(tfmontant.getText());
+//         if(montant<0f || num_tlfn<0){
+//           Alert alert = new Alert(Alert.AlertType.WARNING);
+//            alert.setTitle("Validate Form");
+//            alert.setHeaderText(null);
+//            alert.setContentText("solde_initial or num_tlfn invalid");
+//            alert.showAndWait(); 
+//        }
+//        else{
+//        Transaction t = new Transaction(compte_source_id,nom,prenom,email,num_tlfn,compte_destination,montant);
+//        System.out.println(t);
+//        transactionCRUD tran = new transactionCRUD();
+//        
+//        tran.addEntity(t);
+//        showtransaction();
+//        }
+//        }
+//        else{
+//            System.out.println("Invalid champ");
+//        }
+//         
+//    }
 
     @FXML
    
