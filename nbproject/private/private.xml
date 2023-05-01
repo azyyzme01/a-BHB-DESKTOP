@@ -5,13 +5,20 @@
         <group>
             <file>file:/C:/Users/ANAS/Documents/NetBeansProjects/pi/src/crudpi/GUI/secondwindow.java</file>
             <file>file:/C:/Users/ANAS/Documents/NetBeansProjects/pi/src/crudpi/services/compteBancaireCRUD.java</file>
+            <file>file:/C:/Users/ANAS/Documents/NetBeansProjects/pi/src/crudpi/entities/Transaction.java</file>
+            <file>file:/C:/Users/ANAS/Documents/NetBeansProjects/pi/src/crudpi/GUI/comptefront.fxml</file>
+            <file>file:/C:/Users/ANAS/Documents/NetBeansProjects/pi/src/crudpi/GUI/firstwindow.java</file>
+            <file>file:/C:/Users/ANAS/Documents/NetBeansProjects/pi/src/crudpi/GUI/Ajouter_comptebancaireController.java</file>
+            <file>file:/C:/Users/ANAS/Documents/NetBeansProjects/pi/src/crudpi/GUI/ViewTransactionsController.java</file>
+            <file>file:/C:/Users/ANAS/Documents/NetBeansProjects/pi/src/crudpi/GUI/liaison_front_back.fxml</file>
+            <file>file:/C:/Users/ANAS/Documents/NetBeansProjects/pi/src/crudpi/GUI/ComptefrontController.java</file>
             <file>file:/C:/Users/ANAS/Documents/NetBeansProjects/pi/src/crudpi/GUI/AjoutertransactionController.java</file>
             <file>file:/C:/Users/ANAS/Documents/NetBeansProjects/pi/src/crudpi/GUI/ajoutertransaction.fxml</file>
             <file>file:/C:/Users/ANAS/Documents/NetBeansProjects/pi/src/crudpi/GUI/ViewComptesController.java</file>
-            <file>file:/C:/Users/ANAS/Documents/NetBeansProjects/pi/src/crudpi/GUI/firstwindow.java</file>
             <file>file:/C:/Users/ANAS/Documents/NetBeansProjects/pi/src/crudpi/utils/connexion.java</file>
-            <file>file:/C:/Users/ANAS/Documents/NetBeansProjects/pi/src/crudpi/GUI/Ajouter_comptebancaireController.java</file>
-            <file>file:/C:/Users/ANAS/Documents/NetBeansProjects/pi/src/crudpi/GUI/ViewTransactionsController.java</file>
+            <file>file:/C:/Users/ANAS/Documents/NetBeansProjects/pi/src/crudpi/GUI/viewComptes.fxml</file>
+            <file>file:/C:/Users/ANAS/Documents/NetBeansProjects/pi/src/crudpi/GUI/Liaison_front_backController.java</file>
+            <file>file:/C:/Users/ANAS/Documents/NetBeansProjects/pi/src/crudpi/entities/comptesBancaire.java</file>
             <file>file:/C:/Users/ANAS/Documents/NetBeansProjects/pi/src/crudpi/services/transactionCRUD.java</file>
         </group>
     </open-files>

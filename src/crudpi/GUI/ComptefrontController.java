@@ -215,8 +215,8 @@ public class ComptefrontController implements Initializable {
                         // Retrieve reservation information from the database
                         comptesBancaire res = getTableView().getItems().get(getIndex());
 
-                        String compteinfo = " rib compte: " + res.getId() + "\n nom: " + res.getNom() + "\n prenom: " + 
-                                res.getPrenom() + "\n email: " + res.getEmail() + "\n num_tlfn: " + res.getNum_tlfn() + "\n solde_initial: " + res.getSolde_initial();
+                        String compteinfo = " identifiant: " + res.getId() + "\n nom: " + res.getNom() + "\n prenom: "   + res.getPrenom()+
+                              "\n solde_initial: " + res.getSolde_initial();
 
                         // Generate QR code
                         qrcode qrCodeGenerator = new qrcode();

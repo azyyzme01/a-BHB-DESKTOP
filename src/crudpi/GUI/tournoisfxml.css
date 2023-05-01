@@ -1,0 +1,109 @@
+/*
+ * Empty Stylesheet file.
+ */
+.body {
+  background-color: transparent;
+}
+
+/* Définir un arrière-plan dégradé pour les éléments qui nécessitent une couleur de fond */
+.white-form, .border, .btn, .table-view, .text-field, .label, .choice-box {
+  background: linear-gradient(to bottom right, #ffffff, #e6e6e6);
+}
+
+.border {
+    -fx-border-color: linear-gradient(to bottom right, #0072C6, #F2AF5C); /* bleu et or */
+    -fx-border-width: 1px;
+    -fx-border-radius: 8px;
+}
+
+.btn {
+    -fx-padding: 0px;
+    -fx-background-color: transparent;
+    -fx-border-color: linear-gradient(to bottom right, #0072C6, #F2AF5C); /* bleu et or */
+    -fx-border-radius: 8px;
+    -fx-border-width: 2px;
+}
+
+.btn:hover {
+    -fx-background-color: linear-gradient(to bottom right, #0072C6, #F2AF5C); /* bleu et or */
+}
+
+.table-view {
+    -fx-padding: 0px;
+    -fx-background-color: transparent;
+    -fx-border-color: linear-gradient(to bottom right, #0072C6, #F2AF5C); /* bleu et or */
+    -fx-border-radius: 8px;
+    -fx-border-width: 2px;
+}
+
+.table-view .column-header-background {
+    -fx-background-color: linear-gradient(to bottom right, #0072C6, #F2AF5C); /* bleu et or */
+    -fx-background-radius: 8px 8px 0 0;
+    -fx-background-inset: 0 0 0 0;
+}
+
+.table-view .column-header, .filter {
+    -fx-background-color: transparent;
+    -fx-size: 50px;
+}
+
+.table-view .column-header .label {
+    -fx-text-fill: #D3D3D3; /* gris clair */
+    -fx-font-family: arial;
+}
+
+.text-field {
+    -fx-background-color: #f2f2f2; /* gris clair */
+    -fx-background-radius: 8px;
+    -fx-border-color: #0072C6; /* bleu */
+    -fx-border-radius: 8px;
+    -fx-border-width: 2px;
+    -fx-font-size: 14px;
+    -fx-text-fill: #333; /* noir */
+    -fx-padding: 8px;
+}
+
+.text-field:focused {
+    -fx-background-color: #fff; /* blanc */
+    -fx-border-color: #6EC6FF; /* bleu clair */
+}
+
+.text-field:disabled {
+    -fx-opacity: 0.5;
+}
+
+.text-field:hover {
+    -fx-background-color: #fff; /* blanc */
+}
+
+.label {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #333; /* noir */
+}
+
+.label.error {
+    -fx-text-fill: #FF0000; /* rouge */
+}
+
+.label.disabled {
+    -fx-opacity: 0.5;
+}
+
+.choice-box {
+    -fx-font-size: 14px;
+    -fx-background-color: #FFF;
+    -fx-border-color: #CCC;
+    -fx-border-radius: 5px;
+    -fx-padding: 5px;
+}
+
+.choice-box .arrow {
+    -fx-background-color: #CCC;
+}
+
+.choice-box .label {
+    -fx-text-fill: #333;
+}
+
+

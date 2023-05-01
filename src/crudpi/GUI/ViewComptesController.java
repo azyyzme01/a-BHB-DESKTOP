@@ -224,7 +224,7 @@ public class ViewComptesController implements Initializable {
                         // Retrieve reservation information from the database
                         comptesBancaire res = getTableView().getItems().get(getIndex());
 
-                        String compteinfo = " identifiant: " + res.getId() + "\n nom: " + res.getNom() + "\n prenom: " + 
+                        String compteinfo = " identifiant: " + res.getId() + "\n nom: " + res.getNom() + "\n prenom: " + res.getPrenom()+
                                  "\n solde_initial: " + res.getSolde_initial();
 
                         // Generate QR code

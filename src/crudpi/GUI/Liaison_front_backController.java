@@ -52,7 +52,7 @@ public class Liaison_front_backController implements Initializable {
 
     @FXML
     private void back(ActionEvent event) {
-         FXMLLoader loader = new FXMLLoader(getClass().getResource("ajouter_comptebancaire.fxml"));
+         FXMLLoader loader = new FXMLLoader(getClass().getResource("viewComptes.fxml"));
        try{
        Parent root = loader.load(); 
 

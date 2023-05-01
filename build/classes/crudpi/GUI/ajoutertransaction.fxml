@@ -9,26 +9,26 @@
 
 <AnchorPane id="AnchorPane" prefHeight="592.0" prefWidth="1019.0" style="-fx-background-color: #87CEEB;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="crudpi.GUI.AjoutertransactionController">
    <children>
-      <Label layoutX="30.0" layoutY="26.0" prefHeight="21.0" prefWidth="135.0" text="compte_source_id" />
+      <Label layoutX="30.0" layoutY="26.0" prefHeight="21.0" prefWidth="205.0" text="identifiant de compte source " />
       <Label layoutX="68.0" layoutY="66.0" text="nom" />
       <Label layoutX="57.0" layoutY="103.0" text="prenom" />
       <Label layoutX="65.0" layoutY="142.0" text="email" />
       <Label layoutX="54.0" layoutY="179.0" text="num_tlfn" />
-      <Label layoutX="32.0" layoutY="225.0" text="compte_destination" />
+      <Label layoutX="14.0" layoutY="225.0" text="identifiant de compte destination" />
       <Label layoutX="55.0" layoutY="268.0" text="montant" />
-      <TextField fx:id="tfcompte_source_id" layoutX="193.0" layoutY="21.0" />
-      <TextField fx:id="tfnom" layoutX="193.0" layoutY="61.0" />
-      <TextField fx:id="tfprenom" layoutX="193.0" layoutY="98.0" />
-      <TextField fx:id="tfemail" layoutX="193.0" layoutY="137.0" />
-      <TextField fx:id="tfnum_tlfn" layoutX="193.0" layoutY="174.0" />
-      <TextField fx:id="tf_compte_destination" layoutX="193.0" layoutY="220.0" />
-      <TextField fx:id="tfmontant" layoutX="193.0" layoutY="263.0" />
-      <Button fx:id="btnajoutertransaction" layoutX="23.0" layoutY="334.0" mnemonicParsing="false" onAction="#ajoutertransaction" prefHeight="31.0" prefWidth="109.0" text="ajouter" />
-      <Button fx:id="btnmodifier_transaction" layoutX="488.0" layoutY="303.0" mnemonicParsing="false" onAction="#modifier_transaction" text="modifier" />
-      <Label layoutX="394.0" layoutY="268.0" text="id" />
-      <TextField fx:id="idf" layoutX="448.0" layoutY="263.0" prefHeight="31.0" prefWidth="155.0" />
-      <Button fx:id="btnlistetransactions" layoutX="193.0" layoutY="334.0" mnemonicParsing="false" onAction="#listetransactions" text="voir liste des transactions" />
-      <ImageView fitHeight="181.0" fitWidth="224.0" layoutX="488.0" layoutY="49.0" pickOnBounds="true" preserveRatio="true">
+      <TextField fx:id="tfcompte_source_id" layoutX="248.0" layoutY="21.0" />
+      <TextField fx:id="tfnom" layoutX="248.0" layoutY="61.0" />
+      <TextField fx:id="tfprenom" layoutX="248.0" layoutY="98.0" />
+      <TextField fx:id="tfemail" layoutX="248.0" layoutY="137.0" />
+      <TextField fx:id="tfnum_tlfn" layoutX="248.0" layoutY="174.0" />
+      <TextField fx:id="tf_compte_destination" layoutX="248.0" layoutY="220.0" />
+      <TextField fx:id="tfmontant" layoutX="248.0" layoutY="264.0" />
+      <Button fx:id="btnajoutertransaction" layoutX="23.0" layoutY="334.0" mnemonicParsing="false" onAction="#ajoutertransaction" prefHeight="31.0" prefWidth="109.0" styleClass="btn" stylesheets="@tournoisfxml.css" text="ajouter" />
+      <Button fx:id="btnmodifier_transaction" layoutX="876.0" layoutY="148.0" mnemonicParsing="false" onAction="#modifier_transaction" styleClass="btn" stylesheets="@tournoisfxml.css" text="modifier" />
+      <Label layoutX="721.0" layoutY="51.0" prefHeight="21.0" prefWidth="311.0" text="identifiant de transaction à modifier :" />
+      <TextField fx:id="idf" layoutX="769.0" layoutY="83.0" prefHeight="31.0" prefWidth="155.0" />
+      <Button fx:id="btnlistetransactions" layoutX="219.0" layoutY="319.0" mnemonicParsing="false" onAction="#listetransactions" styleClass="btn" stylesheets="@tournoisfxml.css" text="voir liste des transactions" />
+      <ImageView fitHeight="331.0" fitWidth="224.0" layoutX="488.0" layoutY="49.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@téléchargement%20(4).png" />
          </image>
